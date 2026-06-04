@@ -3,15 +3,48 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muhammad Ibrahim | CS & Mathematics</title>
-  <meta name="description" content="Muhammad Ibrahim's portfolio — CS & Math student at Union College, Research Assistant and Software Engineer."/>
-  <meta name="keywords" content="Muhammad Ibrahim, Ibrahim portfolio, Union College, Full Stack Developer, TypeScript developer"/>
+  <title>Muhammad Ibrahim</title>
+  <meta name="description" content="Muhammad Ibrahim — CS & Mathematics student at Union College."/>
   <meta name="author" content="Muhammad Ibrahim"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oxanium:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- ASK IBRAHIM CHATBOT -->
+  <div class="chat-bubble" id="chatBubble">
+    <div class="chat-avatar">MI</div>
+    <span>Ask Ibrahim</span>
+  </div>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar-sm">MI</div>
+        <div>
+          <div class="chat-title">Ask Ibrahim</div>
+          <div class="chat-subtitle">🟢 AI-powered · knows my portfolio</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose">✕</button>
+    </div>
+    <div class="chat-suggestions">
+      <div class="chat-suggest-label">TRY ASKING</div>
+      <div class="chat-suggest-row">
+        <button class="chat-suggest" data-q="Give me a 30-second overview of Ibrahim">30-second overview</button>
+        <button class="chat-suggest" data-q="What projects has Ibrahim built?">What projects?</button>
+        <button class="chat-suggest" data-q="Tell me about Ibrahim's research work">Research work</button>
+        <button class="chat-suggest" data-q="What is Ibrahim studying at Union College?">What's he studying?</button>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Ask me anything about Ibrahim — projects, experience, education, or what to talk about in an interview.</div>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chatInput" placeholder="Ask about projects, experience..." />
+      <button class="chat-send" id="chatSend">➤</button>
+    </div>
+  </div>
 
   <!-- RESUME MODAL -->
   <div class="modal-overlay" id="resumeModal">
@@ -28,32 +61,29 @@
         </div>
         <div class="resume-modal-section">
           <div class="resume-modal-label">EDUCATION</div>
-          <p><strong>Union College</strong> — Schenectady, NY</p>
-          <p>B.S. Computer Science & Mathematics (Double Major) · Sep 2024 – Jun 2028</p>
-          <p class="resume-modal-muted">Data Structures · Abstract Algebra · Computational Game Theory · Calculus · Geometry · Logic & Set Theory</p>
+          <p><strong>Union College</strong> — B.S. CS & Mathematics · 2024–2028</p>
+          <p class="resume-modal-muted">Data Structures · Abstract Algebra · Game Theory · Calculus · Logic & Set Theory</p>
         </div>
         <div class="resume-modal-section">
           <div class="resume-modal-label">EXPERIENCE</div>
           <p><strong>Research Assistant</strong> — Templeton Institute · Sep 2024 – Present</p>
-          <p class="resume-modal-muted">Funded research transcribing Persian & Arabic mathematical manuscripts. Built Python sexagesimal expression parser with 6+ arithmetic operations.</p>
-          <br/>
-          <p><strong>IT Intern</strong> — iTech Solutions · Aug 2023 – Present</p>
-          <p class="resume-modal-muted">Technical support for 10+ staff, managed ~200 data records across departments.</p>
+          <p class="resume-modal-muted">Python sexagesimal parser, 6+ arithmetic ops, ancient manuscript transcription.</p>
+          <br/><p><strong>IT Intern</strong> — iTech Solutions · Aug 2023 – Present</p>
+          <p class="resume-modal-muted">Technical support for 10+ staff, ~200 data records managed.</p>
         </div>
         <div class="resume-modal-section">
           <div class="resume-modal-label">PROJECTS</div>
-          <p><strong>Stock Price Predictor</strong> — Python, scikit-learn, Pandas · 87% accuracy</p>
+          <p><strong>Stock Price Predictor</strong> — 87% accuracy · Python, scikit-learn</p>
           <p><strong>PathFinder</strong> — TypeScript, React, Flask, OpenAI API</p>
           <p><strong>CampusQuery</strong> — SQL, Python, SQLite</p>
           <p><strong>Poker Game Simulation</strong> — Java, JUnit</p>
         </div>
         <div class="resume-modal-section">
-          <div class="resume-modal-label">TECHNICAL SKILLS</div>
-          <p>Python · Java · SQL · TypeScript · JavaScript · HTML/CSS</p>
-          <p>React · Flask · scikit-learn · Pandas · Git · SQLite · LaTeX</p>
+          <div class="resume-modal-label">SKILLS</div>
+          <p>Python · Java · SQL · TypeScript · JavaScript · HTML/CSS · React · Flask · Git</p>
         </div>
         <div class="resume-modal-download">
-          <a href="RESUME_IBRAHIM.pdf" download class="btn-primary">DOWNLOAD PDF ↓</a>
+          <a href="RESUME_IBRAHIM.pdf" download class="btn-resume-dl">DOWNLOAD PDF ↓</a>
         </div>
       </div>
     </div>
@@ -62,8 +92,9 @@
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <div class="nav-logo">MI<span class="nav-logo-dot">.</span></div>
-      <ul class="nav-links">
+      <div class="nav-logo">MI<span class="nav-dot">.</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -71,92 +102,104 @@
         <li><a href="#contact">Contact</a></li>
         <li><button class="btn-resume-nav" id="openResume">RESUME</button></li>
       </ul>
+      <button class="hamburger" id="hamburger">☰</button>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="about">
-    <div class="hero-grid-bg"></div>
-
-    <!-- F1 CIRCUIT CANVAS -->
-    <canvas id="f1canvas"></canvas>
-
+  <section class="hero" id="hero">
+    <canvas id="solarCanvas"></canvas>
     <div class="hero-content">
-      <div class="hero-tag">⚑ CS & MATHEMATICS · UNION COLLEGE '28</div>
-      <h1 class="hero-name">MUHAMMAD<br><span class="hero-name-accent">IBRAHIM</span></h1>
-      <p class="hero-bio">Computer Science & Mathematics student at Union College. Building intelligent systems, intelligent systems, and bridging ancient mathematics with modern computation.</p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn-primary">VIEW PROJECTS</a>
-        <button class="btn-ghost" id="openResume2">VIEW RESUME</button>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">4</span><span class="stat-label">Projects</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">2</span><span class="stat-label">Roles</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">'28</span><span class="stat-label">Graduating</span></div>
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Muhammad <span class="hero-name-color">Ibrahim</span></h1>
+      <p class="hero-role">I'm <span id="typedRole" class="typed-text"></span><span class="typed-cursor">|</span></p>
+      <p class="hero-bio">Passionate about building intelligent systems and solving complex problems. Scroll down to learn more!</p>
+      <div class="hero-btns">
+        <a href="#about" class="btn-hero-primary">About Me</a>
+        <button class="btn-hero-ghost" id="openResume2">View Resume</button>
       </div>
     </div>
-    <div class="hero-scroll">SCROLL DOWN ↓</div>
+    <div class="scroll-hint">scroll ↓</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about-section" id="about">
+    <div class="section-inner about-inner">
+      <div class="about-text reveal">
+        <div class="section-label">A LITTLE BIT</div>
+        <h2 class="section-title">About <span class="accent">Me</span></h2>
+        <p>Hi, I'm Muhammad Ibrahim! I'm a Computer Science & Mathematics student at Union College, interested in Software Engineering and research — especially work involving complex systems and intelligent algorithms.</p>
+        <br/>
+        <p>Outside of class, I captain the Union College Cricket Club. When I'm not coding, I'm hiking or traveling. Scroll down to learn more!</p>
+        <div class="about-stats">
+          <div class="about-stat"><span class="about-stat-num">4</span><span class="about-stat-label">Projects</span></div>
+          <div class="about-stat"><span class="about-stat-num">2</span><span class="about-stat-label">Roles</span></div>
+          <div class="about-stat"><span class="about-stat-num">'28</span><span class="about-stat-label">Graduating</span></div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <div class="about-card-tag">CS & MATH</div>
+          <div class="about-card-school">Union College</div>
+          <div class="about-card-sub">Schenectady, NY · 2024 — 2028</div>
+          <div class="about-card-tags">
+            <span>Python</span><span>TypeScript</span><span>Java</span><span>SQL</span><span>React</span><span>Flask</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- EDUCATION -->
-  <section class="section" id="education">
+  <section class="section edu-section" id="education">
     <div class="section-inner">
-      <div class="section-label">01 / EDUCATION</div>
-      <h2 class="section-title">ACADEMIC<br><span class="accent">BACKGROUND</span></h2>
+      <div class="section-label">THE ACADEMIC JOURNEY</div>
+      <h2 class="section-title">Edu<span class="accent">cation</span></h2>
       <div class="edu-grid">
         <div class="edu-card reveal">
           <div class="edu-badge current">CURRENT</div>
           <div class="edu-logo">UC</div>
-          <div class="edu-info">
-            <h3>Union College</h3>
-            <p class="edu-location">Schenectady, NY</p>
-            <p class="edu-degree">B.S. Computer Science & Mathematics</p>
-            <p class="edu-detail">Double Major · Minor in Statistics</p>
-            <p class="edu-years">Sep 2024 – Jun 2028</p>
-            <div class="edu-tags">
-              <span>Data Structures</span><span>Abstract Algebra</span><span>Game Theory</span>
-              <span>Calculus</span><span>Logic & Set Theory</span><span>Geometry</span>
-            </div>
+          <h3>Union College</h3>
+          <p class="edu-location">Schenectady, NY</p>
+          <p class="edu-degree">B.S. Computer Science & Mathematics</p>
+          <p class="edu-detail">Double Major · Minor in Statistics</p>
+          <p class="edu-years">Sep 2024 – Jun 2028</p>
+          <div class="edu-tags">
+            <span>Data Structures</span><span>Abstract Algebra</span><span>Game Theory</span><span>Calculus</span><span>Logic & Set Theory</span>
           </div>
         </div>
         <div class="edu-card reveal">
           <div class="edu-badge activity">ACTIVITY</div>
           <div class="edu-logo">🏏</div>
-          <div class="edu-info">
-            <h3>Cricket Club</h3>
-            <p class="edu-location">Union College</p>
-            <p class="edu-degree">Captain</p>
-            <p class="edu-detail">Union College Cricket Club</p>
-            <p class="edu-years">Aug 2025 – Present</p>
-            <div class="edu-tags">
-              <span>Leadership</span><span>Team Management</span><span>Strategy</span>
-            </div>
-          </div>
+          <h3>Cricket Club</h3>
+          <p class="edu-location">Union College</p>
+          <p class="edu-degree">Captain</p>
+          <p class="edu-detail">Union College Cricket Club</p>
+          <p class="edu-years">Aug 2025 – Present</p>
+          <div class="edu-tags"><span>Leadership</span><span>Team Management</span><span>Strategy</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="section section-alt" id="experience">
+  <section class="section exp-section" id="experience">
     <div class="section-inner">
-      <div class="section-label">02 / EXPERIENCE</div>
-      <h2 class="section-title">WHERE I'VE<br><span class="accent">WORKED</span></h2>
+      <div class="section-label">WHERE I'VE WORKED</div>
+      <h2 class="section-title">Experi<span class="accent">ence</span></h2>
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-left"><span class="timeline-date">SEP 2024 — NOW</span></div>
           <div class="timeline-line"><div class="timeline-dot"></div></div>
           <div class="timeline-content">
             <h3>Research Assistant</h3>
-            <p class="timeline-company">⚑ Templeton Institute – Sexagesimal Research · Schenectady, NY</p>
+            <p class="timeline-company">⚑ Templeton Institute · Schenectady, NY</p>
             <ul class="timeline-bullets">
-              <li>Conducting funded research transcribing Persian & Arabic mathematical manuscripts into base-60 computation</li>
+              <li>Funded research transcribing Persian & Arabic manuscripts into base-60 computation</li>
               <li>Implemented 6+ arithmetic operations in a Python iterator engine</li>
-              <li>Engineered a Python-based sexagesimal expression parser, bridging ancient numeral systems with modern computational logic</li>
+              <li>Engineered a Python-based sexagesimal expression parser</li>
             </ul>
-            <div class="timeline-tags"><span>Python</span><span>Mathematics</span><span>Research</span><span>Parsing</span></div>
+            <div class="timeline-tags"><span>Python</span><span>Mathematics</span><span>Research</span></div>
           </div>
         </div>
         <div class="timeline-item reveal">
@@ -166,10 +209,10 @@
             <h3>IT Intern</h3>
             <p class="timeline-company">⚑ iTech Solutions · Pakistan</p>
             <ul class="timeline-bullets">
-              <li>Assisted a 3–4 member IT team with system checks, troubleshooting, and technical support for 10+ staff</li>
-              <li>Entered, updated, and verified ~200 data records across departments</li>
+              <li>Assisted IT team with system checks and support for 10+ staff</li>
+              <li>Managed ~200 data records across departments</li>
             </ul>
-            <div class="timeline-tags"><span>IT Support</span><span>Troubleshooting</span><span>Data Management</span></div>
+            <div class="timeline-tags"><span>IT Support</span><span>Troubleshooting</span><span>Data</span></div>
           </div>
         </div>
       </div>
@@ -177,61 +220,99 @@
   </section>
 
   <!-- PROJECTS -->
-  <section class="section" id="projects">
+  <section class="section proj-section" id="projects">
     <div class="section-inner">
-      <div class="section-label">03 / PROJECTS</div>
-      <h2 class="section-title">THINGS I'VE<br><span class="accent">BUILT</span></h2>
+      <div class="section-label">MY WORK</div>
+      <h2 class="section-title">Pro<span class="accent">jects</span></h2>
+      <!-- Filter tabs -->
+      <div class="proj-filters">
+        <button class="proj-filter active" data-filter="all">All</button>
+        <button class="proj-filter" data-filter="ml">ML / AI</button>
+        <button class="proj-filter" data-filter="swe">SWE</button>
+        <button class="proj-filter" data-filter="data">Data</button>
+      </div>
       <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-header"><span class="project-num">P01</span><a href="https://github.com/ibrahim3521" target="_blank" class="project-link-icon">↗</a></div>
-          <h3>Stock Price Predictor</h3>
-          <p>ML pipeline forecasting stock closing prices using Linear Regression & Random Forest across 5+ years of historical data. 87% directional accuracy on held-out test sets.</p>
-          <div class="project-stat">📈 87% directional accuracy · 23% RMSE reduction</div>
-          <div class="project-tags"><span>Python</span><span>scikit-learn</span><span>Pandas</span><span>yfinance</span></div>
+        <div class="project-card reveal" data-cat="ml">
+          <div class="proj-img-wrap"><div class="proj-img proj-img-1"></div><a href="https://github.com/ibrahim3521" target="_blank" class="proj-gh-btn">⌥ GitHub</a></div>
+          <div class="proj-body">
+            <div class="proj-cats"><span class="proj-cat">ML / AI</span><span class="proj-cat">Python</span></div>
+            <h3>Stock Price Predictor</h3>
+            <p>ML pipeline forecasting stock prices using Linear Regression & Random Forest across 5+ years of data. 87% directional accuracy.</p>
+            <div class="proj-tags"><span>Python</span><span>scikit-learn</span><span>Pandas</span><span>yfinance</span></div>
+          </div>
         </div>
-        <div class="project-card reveal">
-          <div class="project-header"><span class="project-num">P02</span><a href="https://github.com/ibrahim3521" target="_blank" class="project-link-icon">↗</a></div>
-          <h3>PathFinder</h3>
-          <p>Full-stack course planning web app with TypeScript/React frontend and Flask REST API. GPT-powered recommendations across 100+ Union College courses for 50+ beta users.</p>
-          <div class="project-stat">🎓 100+ courses · 40% fewer runtime errors</div>
-          <div class="project-tags"><span>TypeScript</span><span>React</span><span>Flask</span><span>OpenAI API</span></div>
+        <div class="project-card reveal" data-cat="swe">
+          <div class="proj-img-wrap"><div class="proj-img proj-img-2"></div><a href="https://github.com/ibrahim3521" target="_blank" class="proj-gh-btn">⌥ GitHub</a></div>
+          <div class="proj-body">
+            <div class="proj-cats"><span class="proj-cat">SWE</span><span class="proj-cat">ML / AI</span></div>
+            <h3>PathFinder</h3>
+            <p>Full-stack course planning app with TypeScript/React frontend and Flask REST API. GPT-powered recommendations for 100+ Union College courses.</p>
+            <div class="proj-tags"><span>TypeScript</span><span>React</span><span>Flask</span><span>OpenAI</span></div>
+          </div>
         </div>
-        <div class="project-card reveal">
-          <div class="project-header"><span class="project-num">P03</span><a href="https://github.com/ibrahim3521" target="_blank" class="project-link-icon">↗</a></div>
-          <h3>CampusQuery</h3>
-          <p>Normalized relational database with 3+ interconnected tables. Automated query pipelines via Python across 200+ records.</p>
-          <div class="project-stat">🗄️ 200+ records · 3+ interconnected tables</div>
-          <div class="project-tags"><span>SQL</span><span>Python</span><span>SQLite</span></div>
+        <div class="project-card reveal" data-cat="data">
+          <div class="proj-img-wrap"><div class="proj-img proj-img-3"></div><a href="https://github.com/ibrahim3521" target="_blank" class="proj-gh-btn">⌥ GitHub</a></div>
+          <div class="proj-body">
+            <div class="proj-cats"><span class="proj-cat">Data</span><span class="proj-cat">Python</span></div>
+            <h3>CampusQuery</h3>
+            <p>Normalized relational database with automated Python query pipelines across 200+ academic records using joins, aggregations and filters.</p>
+            <div class="proj-tags"><span>SQL</span><span>Python</span><span>SQLite</span></div>
+          </div>
         </div>
-        <div class="project-card reveal">
-          <div class="project-header"><span class="project-num">P04</span><a href="https://github.com/ibrahim3521" target="_blank" class="project-link-icon">↗</a></div>
-          <h3>Poker Game Simulation</h3>
-          <p>Full poker game engine implementing community cards, player actions, and core game logic. Validated with assertion-based testing.</p>
-          <div class="project-stat">🃏 Full game engine · JUnit tested</div>
-          <div class="project-tags"><span>Java</span><span>JUnit</span><span>OOP</span></div>
+        <div class="project-card reveal" data-cat="swe">
+          <div class="proj-img-wrap"><div class="proj-img proj-img-4"></div><a href="https://github.com/ibrahim3521" target="_blank" class="proj-gh-btn">⌥ GitHub</a></div>
+          <div class="proj-body">
+            <div class="proj-cats"><span class="proj-cat">SWE</span><span class="proj-cat">Java</span></div>
+            <h3>Poker Game Simulation</h3>
+            <p>Full poker engine implementing community cards, player actions, and core game logic. Validated with assertion-based JUnit testing.</p>
+            <div class="proj-tags"><span>Java</span><span>JUnit</span><span>OOP</span></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section section-contact" id="contact">
+  <section class="section contact-section" id="contact">
     <div class="section-inner contact-inner">
-      <div class="section-label light">04 / CONTACT</div>
-      <h2 class="section-title light">LET'S<br><span class="accent">CONNECT</span></h2>
-      <p class="contact-sub">Have a project in mind or just want to say hi?</p>
-      <a href="mailto:ibrahim3@union.edu" class="contact-email">ibrahim3@union.edu</a>
-      <div class="social-links">
-        <a href="https://github.com/ibrahim3521" target="_blank">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/muhammad-ibrahim4" target="_blank">LinkedIn ↗</a>
+      <div class="section-label">GET IN TOUCH</div>
+      <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+      <p class="contact-sub">I'm always open to new opportunities, collaborations, or just a good conversation about tech.</p>
+      <div class="contact-cards">
+        <a href="https://www.linkedin.com/in/muhammad-ibrahim4" target="_blank" class="contact-card contact-card-featured">
+          <div class="contact-card-icon" style="background:#0077b5;">in</div>
+          <div class="contact-card-body">
+            <div class="contact-card-tag">PREFERRED</div>
+            <div class="contact-card-title">Connect on LinkedIn</div>
+            <div class="contact-card-sub">I respond within 24 hours</div>
+          </div>
+          <span class="contact-card-arrow">→</span>
+        </a>
+        <div class="contact-card contact-card-email">
+          <div class="contact-card-icon" style="background:#7c3aed;">✉</div>
+          <div class="contact-card-body">
+            <div class="contact-card-tag">EMAIL</div>
+            <div class="contact-card-title">ibrahim3@union.edu</div>
+          </div>
+          <div class="contact-email-btns">
+            <button class="contact-email-btn" id="copyEmail">Copy</button>
+            <a href="mailto:ibrahim3@union.edu" class="contact-email-btn">Send</a>
+          </div>
+        </div>
+        <a href="https://github.com/ibrahim3521" target="_blank" class="contact-card">
+          <div class="contact-card-icon" style="background:#333;">⌥</div>
+          <div class="contact-card-body">
+            <div class="contact-card-tag">CODE</div>
+            <div class="contact-card-title">View GitHub</div>
+            <div class="contact-card-sub">Check out my projects</div>
+          </div>
+          <span class="contact-card-arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <p>© 2026 MUHAMMAD IBRAHIM &nbsp;·&nbsp; BUILT WITH TYPESCRIPT + EXPRESS</p>
-  </footer>
-
+  <footer class="footer">© 2026 MUHAMMAD IBRAHIM · BUILT WITH TYPESCRIPT + EXPRESS</footer>
   <script src="app.js"></script>
 </body>
 </html>
