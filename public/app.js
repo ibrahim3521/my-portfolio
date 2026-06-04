@@ -20,6 +20,19 @@ document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseleave', () => ring.style.transform = 'translate(-50%,-50%) scale(1)');
 });
 
+// Resume modal
+const modal = document.getElementById('resumeModal');
+const openBtns = [document.getElementById('openResume'), document.getElementById('openResume2')];
+const closeBtn = document.getElementById('closeModal');
+
+openBtns.forEach(btn => {
+  if (btn) btn.addEventListener('click', () => modal.classList.add('open'));
+});
+
+closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
+
 // Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -38,29 +51,11 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Skill bars animate on scroll
-const skillObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-        bar.style.width = bar.style.width;
-      });
-      skillObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.3 });
-
-document.querySelectorAll('.skills-list').forEach(el => skillObserver.observe(el));
-
 // Active nav
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 150) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
-  });
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
+  navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === `#${current}`); });
 });
