@@ -167,3 +167,55 @@ body { font-family: var(--body); background: var(--bg); color: var(--white); ove
   body { cursor: auto; }
   .cursor, .cursor-ring { display: none; }
 }
+
+/* ── PLANET COLOR SECTIONS ── */
+
+/* Hero — Sun gold */
+.hero { --accent: #ffd700; --accent-rgb: 255,215,0; }
+.hero .hero-tag { color: var(--accent) !important; }
+.hero .hero-name-accent { color: var(--accent) !important; }
+.hero .btn-primary { background: var(--accent) !important; color: #03040a !important; box-shadow: 0 0 20px rgba(255,215,0,0.3) !important; }
+.hero .btn-ghost { border-color: rgba(255,215,0,0.4) !important; }
+.hero .stat-num { color: var(--accent) !important; }
+
+/* Education — Mars red */
+#education { background: #06030a !important; --accent: #e05020; --accent-rgb: 224,80,32; }
+#education .section-label { color: #e05020 !important; }
+#education .accent { color: #e05020 !important; }
+#education .edu-card { border-color: rgba(224,80,32,0.12) !important; }
+#education .edu-card:hover { border-color: #e05020 !important; box-shadow: 0 0 30px rgba(224,80,32,0.12) !important; }
+#education .edu-badge.current { background: rgba(224,80,32,0.15) !important; color: #e05020 !important; border-color: rgba(224,80,32,0.3) !important; }
+#education .edu-degree { color: #e05020 !important; }
+#education .edu-logo { color: #e05020 !important; background: rgba(224,80,32,0.1) !important; border-color: rgba(224,80,32,0.2) !important; }
+
+/* Experience — Saturn cream/gold */
+#experience { background: #09070a !important; --accent: #e8d080; --accent-rgb: 232,208,128; }
+#experience .section-label { color: #e8d080 !important; }
+#experience .accent { color: #e8d080 !important; }
+#experience .timeline-dot { background: #e8d080 !important; box-shadow: 0 0 10px rgba(232,208,128,0.5) !important; }
+#experience .timeline-date { color: #e8d080 !important; }
+#experience .timeline-company { color: #e8d080 !important; }
+#experience .timeline-tags span { background: rgba(232,208,128,0.08) !important; border-color: rgba(232,208,128,0.2) !important; color: #e8d080 !important; }
+#experience .timeline-bullets li::before { color: #e8d080 !important; }
+
+/* Projects — Jupiter amber */
+#projects { background: #07050a !important; --accent: #d09040; --accent-rgb: 208,144,64; }
+#projects .section-label { color: #d09040 !important; }
+#projects .accent { color: #d09040 !important; }
+#projects .project-card { border-color: rgba(208,144,64,0.1) !important; }
+#projects .project-card:hover { border-color: #d09040 !important; box-shadow: 0 0 30px rgba(208,144,64,0.1) !important; }
+#projects .project-card::before { background: linear-gradient(90deg, #d09040, transparent) !important; }
+#projects .project-num { color: #d09040 !important; }
+#projects .project-link-icon:hover { color: #d09040 !important; }
+#projects .project-stat { color: #d09040 !important; }
+
+/* Contact — Earth blue */
+#contact { background: #030810 !important; --accent: #4a90d9; --accent-rgb: 74,144,217; }
+#contact .section-label { color: #4a90d9 !important; }
+#contact .accent { color: #4a90d9 !important; }
+#contact .contact-email:hover { color: #4a90d9 !important; }
+#contact .contact-email::after { background: #4a90d9 !important; }
+#contact .social-links a:hover { color: #4a90d9 !important; border-color: rgba(74,144,217,0.3) !important; }
+
+/* Nav active states follow planet theme */
+.nav-links a.active { color: #ffd700 !important; }
